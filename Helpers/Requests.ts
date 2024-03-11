@@ -18,9 +18,9 @@ const loginFormData: LoginData = {
     stay_logged_in: 1,
     action: "login",
     referer: "https://www.squashlevels.com/home",
-    email: process.env.SQUASHLEVELS_EMAIL as string,
+    email: process.env.SQUASHLEVELS_USER as string,
     password: "Use MD5",
-    md5password: process.env.SQUASHLEVELS_PASSWORD as string
+    md5password: process.env.SQUASHLEVELS_PASSWORD_MD5 as string
 };
 
 //get Login Page to get cookies
@@ -58,4 +58,3 @@ export const getPlayerDetails = async (): Promise<string> => {
     return response.data;
 
 };
-
