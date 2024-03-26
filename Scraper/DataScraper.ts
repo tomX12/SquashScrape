@@ -49,7 +49,7 @@ export async function collectData(): Promise<LatestPlayerData> {
     return latestData;
 }
 
-async function dataToJson() {
+export async function dataToJson() {
     const dataJson = JSON.stringify(await collectData());
     try {
         fs.writeFileSync("latestMatch.json", dataJson, {
@@ -63,7 +63,7 @@ async function dataToJson() {
     }
 }
 
-async function dataToCsv() {
+export async function dataToCsv() {
     //grab latest match object
     const data = await collectData()
     //convert object to array
@@ -80,6 +80,5 @@ async function dataToCsv() {
     });
 
 }
-
-dataToCsv();
 dataToJson();
+dataToCsv();
