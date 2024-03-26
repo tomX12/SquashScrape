@@ -1,14 +1,14 @@
 {
-  "name": "squashdatascraper",
+  "name": "squashscrape",
   "version": "1.0.0",
-  "description": "",
+  "description": "A scraper that will pull your latest squash match data",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "collect": "tsc && node dist/src/Scraper/DataScraper.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "tomX12",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.6.5",
