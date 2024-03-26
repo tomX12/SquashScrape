@@ -58,7 +58,7 @@ export async function dataToJson() {
 
         console.log("JSON file has been saved.")
     }
-    catch(err){
+    catch (err) {
         console.log(`Unable to create JSONfile: ${err}`)
     }
 }
