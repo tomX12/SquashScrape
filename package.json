@@ -2,10 +2,16 @@
   "name": "squashscrape",
   "version": "1.0.0",
   "description": "A scraper that will pull your latest squash match data",
-  "main": "index.js",
+  "main": "./dist/src/Scraper/DataScraper.js",
+  "module": "./dist/src/Scraper/DataScraper.mjs",
+  "types": "./dist/src/Scraper/DataScraper.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "collect": "tsc && node dist/src/Scraper/DataScraper.js"
+    "collect": "tsc && node dist/src/Scraper/DataScraper.js",
+    "build": "tsup"
   },
   "keywords": [],
   "author": "tomX12",
@@ -20,6 +26,7 @@
   "devDependencies": {
     "@types/node": "^20.11.0",
     "ts-node": "^10.9.2",
+    "tsup": "^8.0.2",
     "typescript": "^5.4.3"
   }
 }
