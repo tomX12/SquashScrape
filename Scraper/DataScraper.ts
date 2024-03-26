@@ -47,3 +47,5 @@ export async function collectData(): Promise<LatestPlayerData> {
     console.log(latestData);
     return latestData;
 }
+
+collectData();
