@@ -1,6 +1,8 @@
 import { getPlayerDetails } from '../Helpers/Requests';
 import * as cheerio from 'cheerio';
 import * as scraperFuncs from './DataScraperFunctions';
+import * as fs from 'fs';
+import { convertToCSV } from '../Helpers/utils';
 
 interface LatestPlayerData {
     dateOfLatestMatch: string;
@@ -18,7 +20,7 @@ interface LatestPlayerData {
     currentLevel: number;
     gamesWon: number;
     gamesLost: number;
-    
+
 }
 
 export async function collectData(): Promise<LatestPlayerData> {
@@ -44,8 +46,40 @@ export async function collectData(): Promise<LatestPlayerData> {
         gamesWon: scraperFuncs.gamesWonAndLost(scraperFuncs.getMyGameScores($), scraperFuncs.getOpponentGameScores($))[0],
         gamesLost: scraperFuncs.gamesWonAndLost(scraperFuncs.getMyGameScores($), scraperFuncs.getOpponentGameScores($))[1]
     }
-    console.log(latestData);
     return latestData;
 }
 
-collectData();
+async function dataToJson() {
+    const dataJson = JSON.stringify(await collectData());
+    try {
+        fs.writeFileSync("latestMatch.json", dataJson, {
+            flag: "w"
+        })
+
+        console.log("JSON file has been saved.")
+    }
+    catch(err){
+        console.log(`Unable to create JSONfile: ${err}`)
+    }
+}
+
+async function dataToCsv() {
+    //grab latest match object
+    const data = await collectData()
+    //convert object to array
+    const dataArr = [data];
+    const csvData = convertToCSV(dataArr);
+
+    // Write CSV string to a file
+    fs.writeFile('data.csv', csvData, 'utf8', (err) => {
+        if (err) {
+            console.error('Error writing CSV file:', err);
+        } else {
+            console.log('CSV file has been saved.');
+        }
+    });
+
+}
+
+dataToCsv();
+dataToJson();

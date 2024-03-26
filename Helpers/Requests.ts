@@ -54,7 +54,6 @@ export const getPlayerDetails = async (): Promise<string> => {
                 'Cookie': await login()
             }
         });
-    console.log(`Response status: ${response.statusText}`);
     return response.data;
 
 };
