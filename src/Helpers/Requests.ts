@@ -1,5 +1,6 @@
 import axios from "axios";
 import dotenv from "dotenv";
+import * as fs from "fs";
 
 
 interface LoginData {
@@ -32,6 +33,13 @@ const getLoginPage = async (): Promise<string[]> => {
 
 //login to site
 const login = async (): Promise<string[]> => {
+
+    fs.access(".env", fs.constants.F_OK, (err) => {
+        if (err) {
+            throw new Error(".env file does not exist in root dir. Please create this.");
+        }
+    })
+
     const response = await axios.post(
         'https://www.squashlevels.com/menu_login',
         loginFormData,
