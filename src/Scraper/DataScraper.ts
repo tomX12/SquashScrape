@@ -59,7 +59,7 @@ export async function dataToJson() {
         console.log("JSON file has been saved.")
     }
     catch (err) {
-        console.log(`Unable to create JSONfile: ${err}`)
+        console.log(`Unable to create JSON file: ${err}`)
     }
 }
 
@@ -71,12 +71,16 @@ export async function dataToCsv() {
     const csvData = convertToCSV(dataArr);
 
     // Write CSV string to a file
-    fs.writeFile('data.csv', csvData, 'utf8', (err) => {
-        if (err) {
-            console.error('Error writing CSV file:', err);
-        } else {
-            console.log('CSV file has been saved.');
-        }
-    });
+    try {
+        fs.writeFileSync("latestMatch.csv", csvData, {
+            flag: "w"
+        })
 
+        console.log("CSV file has been saved.")
+    }
+    catch (err) {
+        console.log(`Unable to create CSV file: ${err}`)
+    }
 }
+
+dataToJson();

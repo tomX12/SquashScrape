@@ -51,7 +51,7 @@ const login = async (): Promise<string[]> => {
             }
         });
     if (response.data.includes("var userName = 'none'")) {
-        throw new Error('Login was not successful, is your .env set correctly?')
+        throw new Error('Login was not successful, is your .env set correctly?'+ response.data)
     }
     const cookie = (response.headers['set-cookie'] as string[]);
     return cookie;
