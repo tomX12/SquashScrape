@@ -79,9 +79,15 @@ You will need to have a squashlevels account.
 3. create .env file
    `SQUASHLEVELS_USER`, `SQUASHLEVELS_PASSWORD_MD5`
 
-2. Collect latest game data
+4. import the package
    ```sh
-   npm run collect
+   import * as squashscrape from 'squashscrape'
+   ```
+5. collect data
+   ```sh
+   squashscrape.dataToCsv(); Will generate a CSV
+   squashscrape.dataToJson(); Will generate a JSON
+   squashscrape.collectData(); Will return an object
    ```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
