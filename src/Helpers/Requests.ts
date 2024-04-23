@@ -46,7 +46,8 @@ const login = async (): Promise<string[]> => {
         {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded',
-                'Cookie': await getLoginPage()
+                'Cookie': await getLoginPage(),
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/123.0.0.0 Safari/537.36'
 
             }
         });

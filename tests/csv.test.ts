@@ -16,7 +16,7 @@ test('adds csv file successfully',  () => {
     expect(fileExists).toBe(true);
 })
 
-test.skip('should have the correct field names and value types', () => {
+test('should have the correct field names and value types', () => {
     const jsonData = JSON.parse(fs.readFileSync('latestMatch.csv', 'utf-8'));
 
     expect(jsonData).toHaveProperty('dateOfLatestMatch');
