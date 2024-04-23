@@ -68,22 +68,18 @@ You will need to have a squashlevels account.
 
 ### Installation
 
-1. Clone the repo
+1. Install package
    ```sh
-   https://github.com/tomX12/SquashScrape.git
+   npm i squashscrape
    ```
-2. Install NPM packages
-   ```sh
-   npm install
-   ```
-3. create .env file
+2. create .env file
    `SQUASHLEVELS_USER`, `SQUASHLEVELS_PASSWORD_MD5`
 
-4. import the package
+3. import the package
    ```sh
    import * as squashscrape from 'squashscrape'
    ```
-5. collect data
+4. collect data
    ```sh
    squashscrape.dataToCsv(); Will generate a CSV
    squashscrape.dataToJson(); Will generate a JSON
