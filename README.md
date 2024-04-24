@@ -23,7 +23,7 @@
 <h3 align="center">SquashScrape</h3>
 
   <p align="center">
-    Get your latest game data, do as you please with it.
+    Get your latest game data.
   </p>
 </div>
 
