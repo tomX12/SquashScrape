@@ -14,11 +14,10 @@ interface LoginData {
 
 dotenv.config();
 
-//form data for login
 const loginFormData: LoginData = {
     stay_logged_in: 1,
     action: "login",
-    referer: "https://www.squashlevels.com/home",
+    referer: "https://app.squashlevels.com/",
     email: process.env.SQUASHLEVELS_USER as string,
     password: "Use MD5",
     md5password: process.env.SQUASHLEVELS_PASSWORD_MD5 as string
@@ -26,7 +25,7 @@ const loginFormData: LoginData = {
 
 //get Login Page to get cookies
 const getLoginPage = async (): Promise<string[]> => {
-    const response = await axios.get('https://www.squashlevels.com/menu_login');
+    const response = await axios.get('https://app.squashlevels.com/dashboard');
     const cookie = (response.headers['set-cookie'] as string[]);
     return cookie;
 }
@@ -41,7 +40,7 @@ const login = async (): Promise<string[]> => {
     })
 
     const response = await axios.post(
-        'https://www.squashlevels.com/menu_login',
+        'https://api.leveltech.squashlevels.com/api/classic/menu_login',
         loginFormData,
         {
             headers: {
@@ -59,7 +58,7 @@ const login = async (): Promise<string[]> => {
 
 //get player details page and return body
 export const getPlayerDetails = async (): Promise<string> => {
-    const response = await axios.get('https://www.squashlevels.com/player_detail',
+    const response = await axios.get('https://api.leveltech.squashlevels.com/api/classic/player_detail',
         {
             headers: {
                 'Cookie': await login()

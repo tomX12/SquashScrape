@@ -2,7 +2,7 @@ import { getPlayerDetails } from '../Helpers/Requests';
 import * as cheerio from 'cheerio';
 import * as scraperFuncs from './DataScraperFunctions';
 import * as fs from 'fs';
-import { convertToCSV } from '../Helpers/utils';
+import { convertToCSV } from '../Helpers/Utils';
 
 interface LatestPlayerData {
     dateOfLatestMatch: string;
@@ -27,7 +27,7 @@ export async function collectData(): Promise<LatestPlayerData> {
     //get body from response.data getPlayerDetails()
     const body = await getPlayerDetails();
     const $ = cheerio.load(body);
-
+    
     //create object to store data of type LatestPlayerData
     const latestData = {
         dateOfLatestMatch: scraperFuncs.getDateOfLatestMatch($),
@@ -80,3 +80,4 @@ export async function dataToCsv() {
     });
 
 }
+dataToCsv();
